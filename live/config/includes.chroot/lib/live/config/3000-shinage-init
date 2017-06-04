@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#echo
+#echo "live-config hook: shinage-init"
+#
+#UHOME=/home/sign
+#
+#_USERNAME=sign
+#_PASSWORD=signage
+#
+#
+#mkdir $UHOME
+#
+#adduser --disabled-password --gecos 'sign' --home $UHOME --shell /bin/bash sign
+#echo "$_USERNAME:$_PASSWORD" | chpasswd
+#
+## enable user input in X
+#adduser sign input
+#
+## enable user to use framebuffer device
+#adduser sign video
+#
+#echo "User sign configured."
+#
+#
+## create symlink for X server start
+#ln -s /usr/bin/Xorg /usr/bin/X
+
+# assure that all files in user's home have the correct owner
+chown -R user:user /home/user
+
+# same for web roots
+chown -R www-data:user /var/www
+
+# and for run-browser script
+chmod +x /usr/local/bin/run-browser.sh
+
+# and now cleanup nginx
+rm /etc/nginx/sites-enabled/default
+
+
