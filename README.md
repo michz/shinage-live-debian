@@ -10,11 +10,6 @@ Furthermore you need the package ```live-build```.
 
 Installation
 ------------
-Go to the root directory of the repository.
-Check out the player repository:
-
-    git clone https://github.com/michz/shinage-player.git
-
 Go to directory ```live``` and execute:
 
     lb build

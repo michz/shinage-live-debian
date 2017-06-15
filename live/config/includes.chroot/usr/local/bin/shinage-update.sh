@@ -2,6 +2,9 @@
 
 set -e
 
+# wait some seconds for network to be really up
+sleep 5
+
 function getShinageBranch {
     CMDLINE=`cat /proc/cmdline`
     for ARG in $CMDLINE

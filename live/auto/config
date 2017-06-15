@@ -13,19 +13,6 @@ case "$(dpkg --print-architecture)" in
 esac
 
 
-# copy skeleton data
-PLAYER_PATH=../shinage-player
-
-mkdir -p config/includes.chroot/var/www
-cp -r $PLAYER_PATH/www/* ./config/includes.chroot/var/www/
-
-mkdir -p config/includes.chroot/etc/nginx/sites-enabled
-mkdir -p config/includes.chroot/etc/nginx/conf.d
-cp -r $PLAYER_PATH/nginx/site-diagnostics ./config/includes.chroot/etc/nginx/sites-enabled/
-cp -r $PLAYER_PATH/nginx/site-signage ./config/includes.chroot/etc/nginx/sites-enabled/
-cp -r $PLAYER_PATH/nginx/diagnostic-htpasswd ./config/includes.chroot/etc/nginx/conf.d/
-
-
 # run actual configuration
 export LH_LANGUAGE="de"
 lb config noauto \
