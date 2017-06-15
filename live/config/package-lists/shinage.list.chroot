@@ -1,6 +1,8 @@
 # standard system stuff
 dropbear
 hdparm
+git
+ca-certificates
 
 # webserver environment
 nginx-light

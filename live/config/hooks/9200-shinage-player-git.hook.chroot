@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+# git clone
+mkdir -p /var/www
+cd /var/www
+git clone --recursive https://github.com/michz/shinage-player.git shinage-player
+
+# cleanup old site definitions
+rm -rf /etc/nginx/sites-enabled/*
+
+# install nginx configuration
+mkdir -p /etc/nginx/conf.d/
+cp /var/www/shinage-player/nginx/diagnostic-htpasswd /etc/nginx/conf.d/diagnostic-htpasswd
+cp /var/www/shinage-player/nginx/site-signage /etc/nginx/sites-enabled/site-signage
+
