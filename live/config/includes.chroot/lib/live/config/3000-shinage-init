@@ -36,6 +36,6 @@ chown -R www-data:user /var/www
 chmod +x /usr/local/bin/run-browser.sh
 
 # and now cleanup nginx
-rm /etc/nginx/sites-enabled/default
+rm -f /etc/nginx/sites-enabled/default
 
 
