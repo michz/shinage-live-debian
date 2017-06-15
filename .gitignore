@@ -1,0 +1,14 @@
+
+shinage-player/
+
+live/binary/
+live/.build/
+live/build.log
+live/cache/
+live/chroot*
+live/chroot/
+live/config/includes.chroot/var/www/
+live/*.iso
+live/live-image-amd64*
+
+

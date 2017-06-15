@@ -1,0 +1,14 @@
+[Unit]
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+ExecStart=/bin/bash /usr/local/bin/shinage-update.sh
+ExecStop=/bin/true
+ExecStopPost=/bin/systemctl --no-block reload nginx
+
+[Install]
+WantedBy=default.target
