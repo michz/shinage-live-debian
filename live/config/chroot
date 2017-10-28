@@ -5,8 +5,8 @@
 LB_CHROOT_FILESYSTEM="squashfs"
 
 # $LB_UNION_FILESYSTEM: set union filesystem
-# (Default: aufs)
-LB_UNION_FILESYSTEM="aufs"
+# (Default: overlay)
+LB_UNION_FILESYSTEM="overlay"
 
 # $LB_INTERACTIVE: set interactive build
 # (Default: false)
@@ -25,12 +25,12 @@ LB_LINUX_FLAVOURS="amd64"
 LB_LINUX_PACKAGES="linux-image linux-headers"
 
 # $LB_SECURITY: enable security updates
-# (Default: false)
-LB_SECURITY="false"
+# (Default: true)
+LB_SECURITY="true"
 
 # $LB_UPDATES: enable updates updates
-# (Default: false)
-LB_UPDATES="false"
+# (Default: true)
+LB_UPDATES="true"
 
 # $LB_BACKPORTS: enable backports updates
 # (Default: false)

@@ -20,9 +20,9 @@ LB_BOOTAPPEND_INSTALL=""
 # (Default: empty)
 LB_BOOTAPPEND_LIVE_FAILSAFE="boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal"
 
-# $LB_BOOTLOADER: set bootloader
-# (Default: syslinux)
-LB_BOOTLOADER="syslinux"
+# $LB_BOOTLOADERS: set bootloaders
+# (Default: syslinux,grub-efi)
+LB_BOOTLOADERS="syslinux,grub-efi"
 
 # $LB_CHECKSUMS: set checksums
 # (Default: md5)
@@ -68,6 +68,10 @@ LB_HDD_LABEL="DEBIAN_LIVE"
 # $LB_HDD_SIZE: set hdd filesystem size
 # (Default: auto)
 LB_HDD_SIZE="auto"
+
+# $LB_HDD_PARTITION_START: set start of partition for the hdd target for BIOSes that expect a specific boot partition start (e.g. "63s"). If empty, use optimal layout.
+# (Default: )
+LB_HDD_PARTITION_START=""
 
 # $LB_ISO_APPLICATION: set iso author
 # (Default: Debian Live)

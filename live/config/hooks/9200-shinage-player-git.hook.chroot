@@ -11,7 +11,7 @@ chmod 755 composer
 # git clone
 mkdir -p /var/www
 cd /var/www
-git clone --recursive https://github.com/michz/shinage-player.git shinage-player
+git clone --branch develop --recursive https://github.com/michz/shinage-player.git shinage-player
 
 # install dependencies
 cd /var/www/shinage-player/www/signage
