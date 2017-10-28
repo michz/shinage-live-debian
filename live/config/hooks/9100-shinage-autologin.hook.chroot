@@ -2,6 +2,10 @@
 
 set -e
 
+# debug output
+echo "Executing hook to login automatically"
+
+# do it
 sed -i "s#ExecStart=.*#ExecStart=-/sbin/agetty --autologin user --noclear %I 38400 linux#" \
      /etc/systemd/system/getty.target.wants/getty\@tty1.service
 
