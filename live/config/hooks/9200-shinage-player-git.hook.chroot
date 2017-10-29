@@ -29,8 +29,8 @@ rm -rf /etc/nginx/sites-enabled/*
 
 # install nginx configuration
 mkdir -p /etc/nginx/conf.d/
-cp -f /var/www/shinage-player/nginx/diagnostic-htpasswd /etc/nginx/conf.d/diagnostic-htpasswd
-cp -f /var/www/shinage-player/nginx/site-signage /etc/nginx/sites-enabled/site-signage
+#cp -f /var/www/shinage-player/nginx/diagnostic-htpasswd /etc/nginx/conf.d/diagnostic-htpasswd
+cp -f /var/www/shinage-player/www/signage/contrib/site-signage /etc/nginx/sites-enabled/site-signage
 
 # adjust rights
 chown -R www-data:www-data /var/www
