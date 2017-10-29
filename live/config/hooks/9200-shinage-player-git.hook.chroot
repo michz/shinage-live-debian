@@ -5,20 +5,24 @@ set -e
 # debug output
 echo "Executing hook to install shinage"
 
-# install composer globally
-cd /usr/local/bin
-rm -f composer composer.phar
-wget -O composer https://getcomposer.org/composer.phar
-chmod 755 composer
+## install composer globally
+#cd /usr/local/bin
+#rm -f composer composer.phar
+#wget -O composer https://getcomposer.org/composer.phar
+#chmod 755 composer
 
 # git clone
-mkdir -p /var/www
-cd /var/www
-git clone --branch develop --recursive https://github.com/michz/shinage-player.git shinage-player
+mkdir -p /var/www/shinage-player
+cd /var/www/shinage-player
+#git clone --branch develop --recursive https://github.com/michz/shinage-player.git shinage-player
+ZIPURL=`curl -s https://api.github.com/repos/michz/shinage-player/releases/latest | grep browser_download_url | cut -d '"' -f 4`
+wget $ZIPURL -O shinage.zip
+unzip shinage.zip
+rm -f shinage.zip
 
-# install dependencies
-cd /var/www/shinage-player/www/signage
-composer install --no-dev --optimize-autoloader
+## install dependencies
+#cd /var/www/shinage-player/www/signage
+#composer install --no-dev --optimize-autoloader
 
 # cleanup old site definitions
 rm -rf /etc/nginx/sites-enabled/*
@@ -27,4 +31,8 @@ rm -rf /etc/nginx/sites-enabled/*
 mkdir -p /etc/nginx/conf.d/
 cp -f /var/www/shinage-player/nginx/diagnostic-htpasswd /etc/nginx/conf.d/diagnostic-htpasswd
 cp -f /var/www/shinage-player/nginx/site-signage /etc/nginx/sites-enabled/site-signage
+
+# adjust rights
+chown -R www-data:www-data /var/www
+chmod -R 755 /var/www/
 
