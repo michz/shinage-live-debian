@@ -15,7 +15,7 @@ echo "Executing hook to install shinage"
 mkdir -p /var/www/shinage-player
 cd /var/www/shinage-player
 #git clone --branch develop --recursive https://github.com/michz/shinage-player.git shinage-player
-ZIPURL=`curl -s https://api.github.com/repos/michz/shinage-player/releases/latest | grep browser_download_url | cut -d '"' -f 4`
+ZIPURL=`wget "https://api.github.com/repos/michz/shinage-player/releases/latest" -O - | grep browser_download_url | cut -d '"' -f 4`
 wget $ZIPURL -O shinage.zip
 unzip shinage.zip
 rm -f shinage.zip
