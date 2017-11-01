@@ -34,7 +34,7 @@ if [ -f $SHINAGE_UPDATE ]
     then
         cp $SHINAGE_UPDATE /var/www/shinage-player
         cd /var/www/shinage-player
-        unzip $SHINAGE_FILE
+        unzip -o $SHINAGE_FILE
         rm -f $SHINAGE_FILE
         echo "Updates shinage from persistence medium."
 fi
@@ -55,4 +55,11 @@ rm -f /etc/nginx/sites-enabled/default
 # make persistence path writable by user
 chown -R www-data:user /p
 chmod -R 777 /p
+
+# add cron
+echo '* *  * * *    root    XAUTHORITY=/home/user/.Xauthority DISPLAY=:0 /usr/bin/scrot /tmp/screen.png -e "/usr/bin/convert -thumbnail 200 \$f \$f.thumb.png && /var/www/shinage-player/www/signage/bin/console shinage:player:screenshot:upload \$f.thumb.png"' \
+    >> /etc/crontab
+
+service crontab restart
+
 
