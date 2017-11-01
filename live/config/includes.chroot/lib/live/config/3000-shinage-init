@@ -26,6 +26,20 @@
 ## create symlink for X server start
 #ln -s /usr/bin/Xorg /usr/bin/X
 
+
+# install update if file is on persistence medium
+SHINAGE_FILE=shinage-player.zip
+SHINAGE_UPDATE=/p/$SHINAGE_FILE
+if [ -f $SHINAGE_UPDATE ]
+    then
+        cp $SHINAGE_UPDATE /var/www/shinage-player
+        cd /var/www/shinage-player
+        unzip -o $SHINAGE_FILE
+        rm -f $SHINAGE_FILE
+        echo "Updates shinage from persistence medium."
+fi
+
+
 # assure that all files in user's home have the correct owner
 chown -R user:user /home/user
 
@@ -37,5 +51,15 @@ chmod +x /usr/local/bin/run-browser.sh
 
 # and now cleanup nginx
 rm -f /etc/nginx/sites-enabled/default
+
+# make persistence path writable by user
+chown -R www-data:user /p
+chmod -R 777 /p
+
+# add cron
+echo '* *  * * *    root    XAUTHORITY=/home/user/.Xauthority DISPLAY=:0 /usr/bin/scrot /tmp/screen.png -e "/usr/bin/convert -thumbnail 200 \$f \$f.thumb.png && /var/www/shinage-player/www/signage/bin/console shinage:player:screenshot:upload \$f.thumb.png"' \
+    >> /etc/crontab
+
+service crontab restart
 
 
