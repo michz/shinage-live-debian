@@ -26,6 +26,7 @@ unclutter
 xinit
 xserver-xorg-video-fbdev
 xserver-xorg-video-vesa
+xserver-xorg-video-modesetting
 xserver-xorg-video-nouveau
 xserver-xorg-video-ati
 xserver-xorg-input-evdev
