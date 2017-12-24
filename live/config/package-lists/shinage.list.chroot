@@ -31,4 +31,5 @@ xserver-xorg-video-ati
 xserver-xorg-input-evdev
 scrot
 imagemagick
+matchbox-window-manager
 
