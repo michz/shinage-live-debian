@@ -54,8 +54,19 @@ To make a customized live system follow these steps.
 * After all do not forget to ```umount /mnt/persistence```.
 
 
+Hooks
+-----
+You can create following files in the persistence media filesystem:
+* ```.profile``` will be executed inside user's ```.profile``` file
+* ```before-wm.xsession``` will be executed inside users ```.xession```
+  before the window manager is started.
+* ```after-wm.xsession``` will be executed inside users ```.xession```
+  after the window manager is started.
+* If you set the variable ```CHROMIUMPARAMETERS```
+  (via ```export``` in ```before-wm.xsession``` or ```after-wm.xsession```)
+  you can add additional parameters to the chromium call that starts the browser.
+
+
 License
 -------
 MIT
-
-

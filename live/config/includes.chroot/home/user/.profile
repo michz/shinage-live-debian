@@ -12,6 +12,12 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
+# load persistent .profile file
+PERSISTENTFILE="/p/.profile"
+if [ -f $PERSISTENTFILE ]; then
+   echo "Executing persistent .profile file..."
+   source $PERSISTENTFILE
+fi
 
 if ! pidof X &>/dev/null; then
     while true; do
